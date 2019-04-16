@@ -1,0 +1,48 @@
+<div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+  <form (ngSubmit)="onSubmit(f)">
+      <h1 class="mb-8 text-3xl text-center">Adicionar Dívida</h1>
+
+      <label>Cliente</label>
+      <select
+              [(ngModel)]="clientId"
+              name="clientId"
+              class="block border border-grey-light w-full p-2 rounded mb-4"
+      >
+          <option
+                  *ngFor="let client of clients"
+                  [value]="client.id"
+          >{{ client.name }}</option>
+      </select>
+
+      <label>Motivo</label>
+      <input
+              [(ngModel)]="reason"
+              name="reason"
+              type="text"
+              class="block border border-grey-light w-full p-3 rounded mb-4"
+              placeholder="Motivo" />
+
+      <label>Valor</label>
+      <input
+              [(ngModel)]="value"
+              name="value"
+              currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }"
+              type="text"
+              class="block border border-grey-light w-full p-3 rounded mb-4"
+              placeholder="Valor R$" />
+
+      <label>Data</label>
+      <input
+              [(ngModel)]="date"
+              name="date"
+              type="date"
+              class="block border border-grey-light w-full p-3 rounded mb-4" />
+
+      <button
+              [ngClass]="setClasses()"
+              [disabled]="disabledSubmit"
+              type="submit"
+      >Adicionar Dívida</button>
+  </form>
+</div>

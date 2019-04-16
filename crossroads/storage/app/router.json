@@ -1,0 +1,33 @@
+[
+  {
+    "domain": "https://jsonplaceholder.typicode.com",
+    "uri": "/users",
+    "method": "get",
+    "permission": []
+  }, {
+    "domain": "https://jsonplaceholder.typicode.com",
+    "uri": "/users/{id}",
+    "method": "get",
+    "permission": []
+  }, {
+    "domain": "http://nginx/debits",
+    "uri": "/debit",
+    "method": "get",
+    "permission": []
+  }, {
+    "domain": "http://nginx/debits",
+    "uri": "/debit/{id}",
+    "method": "delete",
+    "permission": []
+  }, {
+    "domain": "http://nginx/debits",
+    "uri": "/debit",
+    "method": "post",
+    "permission": []
+  }, {
+    "domain": "http://nginx/debits",
+    "uri": "/debit/{id}",
+    "method": "put",
+    "permission": []
+  }
+]

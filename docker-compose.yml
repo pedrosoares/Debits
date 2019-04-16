@@ -1,0 +1,51 @@
+version: '2'
+services:
+  nginx:
+    build: images/nginx
+    command: nginx -g "daemon off;"
+    links:
+      - frontend
+      - crossroads
+      - debit_service
+    ports:
+      - "80:80"
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.4
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/usr/src/app
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+    command: bash ./boot-angular
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.5
+
+  crossroads:
+    build: images/php
+    volumes:
+      - ./crossroads:/var/www/html
+    command: boot-php
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.1
+
+  debit_service:
+    build: images/php
+    volumes:
+      - ./debit_service:/var/www/html
+    command: boot-php
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.2
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          ip_range: 172.28.5.0/24

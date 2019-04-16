@@ -1,0 +1,6 @@
+[submodule "crossroads"]
+	path = crossroads
+	url = https://github.com/pedrosoares/crossroads
+[submodule "auth"]
+	path = auth
+	url = https://github.com/pedrosoares/AuthService

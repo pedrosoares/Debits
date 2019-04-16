@@ -1,0 +1,59 @@
+<div>
+    <div class="flex hover:bg-grey-lighter w-full">
+        <div class="py-4 px-6 border-b border-grey-light">
+            #{{ debit.id }}
+        </div>
+        <div class="w-3/5 py-4 px-3 border-b border-grey-light" (click)="toggleDetail()">
+            <p>
+                {{ debit.client.name }}
+            </p>
+            <p class="text-grey-darker">
+                {{ debit.reason }} ({{ debit.date_formatted }})
+            </p>
+            <small class="w-full text-red">
+                R$ {{ debit.value }}
+            </small>
+        </div>
+        <div class="w-2/5 py-8 px-6 border-b border-grey-light text-right">
+            <button
+                    (click)="toggleDetail()"
+                    [disabled]="disableDelete"
+                    class="text-grey-lighter no-underline font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark mr-1">Detalhes</button>
+            <button
+                    (click)="onEdit(debit)"
+                    [disabled]="disableDelete"
+                    class="text-grey-lighter no-underline font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark mr-1">Editar</button>
+            <button
+                    [ngClass]="setClasses()"
+                    [disabled]="disableDelete"
+                    (click)="onDelete(debit)">Excluir</button>
+        </div>
+    </div>
+    <div class="w-full flex-row p-4 bg-grey-lighter" *ngIf="detail">
+        <label>Id da dívida</label>
+        <input class="block border border-grey-light w-full p-3 rounded mb-4 text-grey-darkest bg-grey-lightest"
+               disabled="disabled" [value]="debit.id">
+
+        <label>Cliente</label>
+        <input class="block border border-grey-light w-full p-3 rounded mb-4 text-grey-darkest bg-grey-lightest"
+               disabled="disabled" [value]="debit.client.name">
+
+        <label>Motivo</label>
+        <input class="block border border-grey-light w-full p-3 rounded mb-4 text-grey-darkest bg-grey-lightest"
+               disabled="disabled" [value]="debit.reason">
+
+        <label>Valor</label>
+        <input
+                [(ngModel)]="debit.value"
+                name="value"
+                disabled="disabled"
+                currencyMask
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }"
+                type="text"
+                class="block border border-grey-light w-full p-3 rounded mb-4 text-grey-darkest bg-grey-lightest" />
+
+        <label>Data</label>
+        <input class="block border border-grey-light w-full p-3 rounded mb-4 text-grey-darkest bg-grey-lightest"
+               disabled="disabled" [value]="debit.date_formatted">
+    </div>
+</div>

@@ -1,0 +1,8 @@
+if [[ -e ./boot_project.sh ]]
+then
+    ./boot_project.sh
+else
+    echo "Not to do"
+fi
+
+php-fpm

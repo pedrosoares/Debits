@@ -1,0 +1,10 @@
+FROM node
+
+RUN npm install -g @angular/cli && \
+  git config --global user.email "contato@pedrosoares.net" && \
+  git config --global user.name "Pedro Soares"
+
+EXPOSE 4200
+
+CMD ["bash"]
+
