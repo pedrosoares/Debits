@@ -26,3 +26,5 @@ else
     ## Create all tables
     php artisan migrate --force
 fi
+
+chmod -R 777 .

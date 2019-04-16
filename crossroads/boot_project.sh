@@ -15,3 +15,5 @@ then
 else
     php composer.phar install
 fi
+
+chmod -R 777 .
