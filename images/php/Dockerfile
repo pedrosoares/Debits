@@ -2,7 +2,7 @@ FROM php:7.2-fpm-alpine
 # lumen packages
 RUN docker-php-ext-install mbstring tokenizer mysqli pdo_mysql
 
-RUN apt-get update && apt-get install -f git && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache git
 
 COPY ./boot-php /usr/bin/boot-php
 
