@@ -1,5 +1,5 @@
-<div class="flex mt-4">
-  <div class="bg-white px-6 py-8 rounded shadow-md text-black px-4 w-2/5">
+<div class="flex flex-wrap mt-4">
+  <div class="flex-row bg-white px-6 py-8 rounded shadow-md text-black px-4 lg:w-2/5 sm:w-full sm:m-4 lg:m-0">
     <app-debit-item
             *ngFor="let debit of debits"
             [debit]="debit"
@@ -10,14 +10,14 @@
   <app-add-debit
           [clients]="clients"
           *ngIf="debit == null"
-          class="px-4 w-3/5"
+          class="px-4 lg:w-3/5 sm:w-full"
           (addDebit)="addDebit($event)"
   ></app-add-debit>
   <app-edit-debit
           [clients]="clients"
           [debit]="debit"
           *ngIf="debit != null"
-          class="px-4 w-3/5"
+          class="px-4 lg:w-3/5 sm:w-full"
           (updateDebit)="updateDebit($event)"
   ></app-edit-debit>
 </div>
